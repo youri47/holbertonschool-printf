@@ -1,0 +1,123 @@
+.TH _PRINTF 3 "Novembre 2025" "Version 1.0" "Bibliothèque Personnalisée Holberton School"
+.SH NOM
+_printf \- formater et afficher des données
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.BI "int _printf(const char *" format ", ...);"
+.SH DESCRIPTION
+La fonction
+.BR _printf ()
+produit une sortie selon un
+.I format
+tel que décrit ci-dessous. Cette fonction écrit la sortie vers
+.BR stdout ,
+le flux de sortie standard.
+.PP
+La fonction
+.BR _printf ()
+écrit la sortie sous le contrôle d'une chaîne de
+.I format
+qui spécifie comment les arguments suivants sont convertis pour la sortie.
+.SS Valeur de retour
+En cas de succès, cette fonction retourne le nombre de caractères
+affichés (à l'exclusion de l'octet nul utilisé pour terminer les chaînes).
+.PP
+Si une erreur de sortie est rencontrée, une valeur négative est retournée.
+.SS Format de la chaîne de format
+La chaîne de format est une chaîne de caractères composée de zéro ou plusieurs directives :
+caractères ordinaires (autres que
+.BR % ),
+qui sont copiés tels quels vers le flux de sortie ; et spécifications de conversion,
+dont chacune entraîne la récupération de zéro ou plusieurs arguments suivants.
+Chaque spécification de conversion est introduite par le caractère
+.BR % ,
+et se termine par un
+.IR "spécificateur de conversion" .
+.PP
+Les spécificateurs de conversion supportés sont :
+.TP
+.B c
+L'argument
+.I int
+est converti en
+.IR "unsigned char" ,
+et le caractère résultant est affiché.
+.TP
+.B s
+L'argument
+.I "const char *"
+doit être un pointeur vers un tableau de type caractère (pointeur
+vers une chaîne). Les caractères du tableau sont affichés jusqu'à (mais sans
+inclure) l'octet nul de fin ('\\0').
+.TP
+.B %
+Un '%' est affiché. Aucun argument n'est converti. La spécification de
+conversion complète est '%%'.
+.TP
+.B d, i
+L'argument
+.I int
+est converti en notation décimale signée.
+.SH EXEMPLES
+Pour afficher la chaîne "Bonjour, le monde !" suivie d'une nouvelle ligne :
+.PP
+.in +4n
+.EX
+#include "main.h"
+
+_printf("Bonjour, le monde !\\n");
+.EE
+.in
+.PP
+Pour afficher un entier :
+.PP
+.in +4n
+.EX
+int nombre = 42;
+_printf("La réponse est %d\\n", nombre);
+.EE
+.in
+.PP
+Pour afficher un caractère :
+.PP
+.in +4n
+.EX
+char lettre = 'A';
+_printf("Lettre : %c\\n", lettre);
+.EE
+.in
+.PP
+Pour afficher une chaîne :
+.PP
+.in +4n
+.EX
+char *str = "Holberton";
+_printf("École : %s\\n", str);
+.EE
+.in
+.SH VALEUR DE RETOUR
+En cas de succès, ces fonctions retournent le nombre de caractères
+affichés (à l'exclusion de l'octet nul utilisé pour terminer les chaînes).
+.PP
+Si une erreur de sortie est rencontrée ou si
+.I format
+est NULL, une valeur négative (\-1) est retournée.
+.SH NOTES
+La fonction
+.BR _printf ()
+est une version simplifiée de la fonction de bibliothèque standard
+.BR printf (3).
+Elle n'implémente pas la gamme complète de spécificateurs de conversion, drapeaux,
+largeur de champ, précision ou modificateurs de longueur disponibles dans
+.BR printf (3).
+.SH BOGUES
+Aucun bogue connu.
+.SH VOIR AUSSI
+.BR printf (3),
+.BR puts (3),
+.BR putchar (3)
+.SH AUTEURS
+Écrit par les étudiants de Holberton School dans le cadre du projet printf.
+.SH COPYRIGHT
+Ceci est un logiciel libre ; voir le code source pour les conditions de copie.
