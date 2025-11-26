@@ -4,9 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-/* Prototypes de toutes tes fonctions */
-int _putchar(char c);
-int print_number(int n);
 int _printf(const char *format, ...);
+int _putchar(char c);
 
-#endif /* MAIN_H */
+#endif
