@@ -2,7 +2,7 @@
 
 /**
  * print_number - Affiche un entier sur stdout
- * @n: L'entier à afficher
+ * @n: L'entier a afficher
  *
  * Return: Le nombre de caractères affichés
  */
